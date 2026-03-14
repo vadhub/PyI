@@ -1,12 +1,18 @@
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Html
+import android.view.GestureDetector
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.viewpager2.widget.ViewPager2
 import com.abg.pyi.DataProvider
+import com.abg.pyi.LessonsPagerFragment
+import com.abg.pyi.R
 import com.abg.pyi.databinding.FragmentLessonBinding
 import com.abg.pyi.code_editor.CodeEditorHelper
 import com.abg.pyi.code_editor.ICodeEditorActions
@@ -15,6 +21,9 @@ class LessonFragment : Fragment(), ICodeEditorActions {
 
     private var _binding: FragmentLessonBinding? = null
     private val binding get() = _binding!!
+
+    private var isHorizontalScroll = false
+    private lateinit var gestureDetector: GestureDetector
 
     private lateinit var codeEditorHelper: CodeEditorHelper
 
@@ -37,6 +46,7 @@ class LessonFragment : Fragment(), ICodeEditorActions {
         return binding.root
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -98,6 +108,42 @@ class LessonFragment : Fragment(), ICodeEditorActions {
             val input = binding.editTextInput.text.toString()
             val output = codeEditorHelper.executePythonCode(code, input)
             binding.tvOutput.text = output
+        }
+
+        val parentFragment = requireParentFragment()
+        if (parentFragment is LessonsPagerFragment) {
+            val viewPager = parentFragment.requireView().findViewById<ViewPager2>(R.id.view_pager)
+
+            // Инициализация GestureDetector
+            gestureDetector = GestureDetector(requireContext(), object : GestureDetector.SimpleOnGestureListener() {
+                override fun onScroll(e1: MotionEvent?, e2: MotionEvent, distanceX: Float, distanceY: Float): Boolean {
+                    // Если горизонтальное перемещение превышает вертикальное, считаем, что это горизонтальный скролл
+                    if (Math.abs(distanceX) > Math.abs(distanceY)) {
+                        isHorizontalScroll = true
+                        viewPager.requestDisallowInterceptTouchEvent(true)
+                    } else {
+                        isHorizontalScroll = false
+                    }
+                    return false
+                }
+            })
+
+            binding.editTextCode.setOnTouchListener { _, event ->
+                gestureDetector.onTouchEvent(event)
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        // Начало касания — сбрасываем флаг и блокируем ViewPager
+                        isHorizontalScroll = false
+                        viewPager.requestDisallowInterceptTouchEvent(true)
+                    }
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                        // Жест завершён — разрешаем ViewPager снова
+                        viewPager.requestDisallowInterceptTouchEvent(false)
+                    }
+                }
+                // Важно: возвращаем false, чтобы CodeView сам обработал событие
+                false
+            }
         }
     }
 

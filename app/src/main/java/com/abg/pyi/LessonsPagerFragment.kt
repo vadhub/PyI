@@ -39,6 +39,7 @@ class LessonsPagerFragment : Fragment() {
 
         val adapter = LessonsPagerAdapter(this, module)
         binding.viewPager.adapter = adapter
+        binding.viewPager.isUserInputEnabled = false
 
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = module.lessons[position].title

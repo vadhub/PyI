@@ -45,6 +45,10 @@ class CodeEditorHelper(
         codeView.setLineNumberTextColor(Color.GRAY)
         codeView.setLineNumberTextSize(18f)
 
+        codeView.setHorizontallyScrolling(true)           // включает горизонтальную прокрутку текста
+        codeView.isHorizontalScrollBarEnabled = true      // показывает полосу прокрутки
+        codeView.isVerticalScrollBarEnabled = true
+
         // Highlight current line
         codeView.setEnableHighlightCurrentLine(true)
         codeView.setHighlightCurrentLineColor(Color.GRAY)

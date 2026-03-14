@@ -51,6 +51,8 @@
                 android:layout_height="match_parent"
                 android:background="@color/darkGrey"
                 android:dropDownWidth="150dp"
+                android:scrollbars="horizontal|vertical"
+                android:overScrollMode="always"
                 android:dropDownHorizontalOffset="0dp"
                 android:dropDownSelector="@color/darkGrey"
                 android:gravity="top|start"
