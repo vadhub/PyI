@@ -12,18 +12,8 @@ import java.util.Objects;
 import java.util.Set;
 
 public class LanguageManager {
-
-    public enum LanguageName {
-        JAVA,
-        PYTHON,
-        GO_LANG
-    }
-
     public enum ThemeName {
-        MONOKAI,
-        NOCTIS_WHITE,
-        FIVE_COLOR,
-        ORANGE_BOX
+        MONOKAI, NOCTIS_WHITE, FIVE_COLOR, ORANGE_BOX
     }
 
     private final Context context;
@@ -34,87 +24,67 @@ public class LanguageManager {
         this.codeView = codeView;
     }
 
-    public void applyTheme(LanguageName language, ThemeName theme) {
+    public void applyTheme(ThemeName theme) {
         switch (theme) {
             case MONOKAI:
-                applyMonokaiTheme(language);
+                applyMonokaiTheme();
                 break;
             case NOCTIS_WHITE:
-                applyNoctisWhiteTheme(language);
+                applyNoctisWhiteTheme();
                 break;
             case FIVE_COLOR:
-                applyFiveColorsDarkTheme(language);
+                applyFiveColorsDarkTheme();
                 break;
             case ORANGE_BOX:
-                applyOrangeBoxTheme(language);
+                applyOrangeBoxTheme();
                 break;
         }
     }
 
-    public String[] getLanguageKeywords(LanguageName language) {
-        if (Objects.requireNonNull(language) == LanguageName.PYTHON) {
-            return PythonLanguage.getKeywords(context);
-        }
-        return new String[]{};
+    public String[] getLanguageKeywords() {
+        return PythonLanguage.getKeywords(context);
+
     }
 
-    public List<Code> getLanguageCodeList(LanguageName language) {
-        if (Objects.requireNonNull(language) == LanguageName.PYTHON) {
-            return PythonLanguage.getCodeList(context);
-        }
-        return new ArrayList<>();
+    public List<Code> getLanguageCodeList() {
+
+        return PythonLanguage.getCodeList(context);
     }
 
-    public Set<Character> getLanguageIndentationStarts(LanguageName language) {
-        if (Objects.requireNonNull(language) == LanguageName.PYTHON) {
-            return PythonLanguage.getIndentationStarts();
-        }
-        return new HashSet<>();
+    public Set<Character> getLanguageIndentationStarts() {
+        return PythonLanguage.getIndentationStarts();
+
     }
 
-    public Set<Character> getLanguageIndentationEnds(LanguageName language) {
-        if (Objects.requireNonNull(language) == LanguageName.PYTHON) {
-            return PythonLanguage.getIndentationEnds();
-        }
-        return new HashSet<>();
+    public Set<Character> getLanguageIndentationEnds() {
+        return PythonLanguage.getIndentationEnds();
+
     }
 
-    public String getCommentStart(LanguageName language) {
-        if (Objects.requireNonNull(language) == LanguageName.PYTHON) {
-            return PythonLanguage.getCommentStart();
-        }
-        return "";
+    public String getCommentStart() {
+        return PythonLanguage.getCommentStart();
+
     }
 
-    public String getCommentEnd(LanguageName language) {
-        if (Objects.requireNonNull(language) == LanguageName.PYTHON) {
-            return PythonLanguage.getCommentEnd();
-        }
-        return "";
+    public String getCommentEnd() {
+        return PythonLanguage.getCommentEnd();
     }
 
-    private void applyMonokaiTheme(LanguageName language) {
-        if (Objects.requireNonNull(language) == LanguageName.PYTHON) {
-            PythonLanguage.applyMonokaiTheme(context, codeView);
-        }
+    private void applyMonokaiTheme() {
+        PythonLanguage.applyMonokaiTheme(context, codeView);
     }
 
-    private void applyNoctisWhiteTheme(LanguageName language) {
-        if (Objects.requireNonNull(language) == LanguageName.PYTHON) {
-            PythonLanguage.applyNoctisWhiteTheme(context, codeView);
-        }
+    private void applyNoctisWhiteTheme() {
+        PythonLanguage.applyNoctisWhiteTheme(context, codeView);
+
     }
 
-    private void applyFiveColorsDarkTheme(LanguageName language) {
-        if (Objects.requireNonNull(language) == LanguageName.PYTHON) {
-            PythonLanguage.applyFiveColorsDarkTheme(context, codeView);
-        }
+    private void applyFiveColorsDarkTheme() {
+        PythonLanguage.applyFiveColorsDarkTheme(context, codeView);
     }
 
-    private void applyOrangeBoxTheme(LanguageName language) {
-        if (Objects.requireNonNull(language) == LanguageName.PYTHON) {
-            PythonLanguage.applyOrangeBoxTheme(context, codeView);
-        }
+    private void applyOrangeBoxTheme() {
+        PythonLanguage.applyOrangeBoxTheme(context, codeView);
     }
 
 }

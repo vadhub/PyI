@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var languageNameText: TextView
     private lateinit var sourcePositionText: TextView
 
-    private var currentLanguage: LanguageManager.LanguageName = LanguageManager.LanguageName.PYTHON
     private var currentTheme: LanguageManager.ThemeName = LanguageManager.ThemeName.MONOKAI
 
     private val useModernAutoCompleteAdapter = true
@@ -108,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
         // Setup the language and theme with SyntaxManager helper class
         languageManager = LanguageManager(this, codeView)
-        languageManager.applyTheme(currentLanguage, currentTheme)
+        languageManager.applyTheme(currentTheme)
 
         // Setup auto pair complete
         val pairCompleteMap: MutableMap<Char?, Char?> = HashMap<Char?, Char?>()
@@ -131,7 +130,7 @@ class MainActivity : AppCompatActivity() {
     private fun configLanguageAutoComplete() {
         if (useModernAutoCompleteAdapter) {
             // Load the code list (keywords and snippets) for the current language
-            val codeList: List<Code?> = languageManager.getLanguageCodeList(currentLanguage)
+            val codeList: List<Code?> = languageManager.languageCodeList
 
             // Use CodeViewAdapter or custom one
             val adapter: CustomCodeViewAdapter = CustomCodeViewAdapter(this, codeList)
@@ -140,7 +139,7 @@ class MainActivity : AppCompatActivity() {
             codeView.setAdapter(adapter)
         } else {
             val languageKeywords: Array<String?> =
-                languageManager.getLanguageKeywords(currentLanguage)
+                languageManager.languageKeywords
 
             // Custom list item xml layout
             val layoutId: Int = R.layout.list_item_suggestion
@@ -155,8 +154,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configLanguageAutoIndentation() {
-        codeView.setIndentationStarts(languageManager.getLanguageIndentationStarts(currentLanguage))
-        codeView.setIndentationEnds(languageManager.getLanguageIndentationEnds(currentLanguage))
+        codeView.setIndentationStarts(languageManager.languageIndentationStarts)
+        codeView.setIndentationEnds(languageManager.languageIndentationEnds)
     }
 
     private fun configCodeViewPlugins() {
@@ -175,32 +174,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun configCommentInfo() {
-        commentManager.setCommentStart(languageManager.getCommentStart(currentLanguage))
-        commentManager.setCommendEnd(languageManager.getCommentEnd(currentLanguage))
+        commentManager.setCommentStart(languageManager.commentStart)
+        commentManager.setCommendEnd(languageManager.commentEnd)
     }
 
     private fun configLanguageName() {
-        languageNameText.setText(currentLanguage.name.toLowerCase())
+        languageNameText.text = "Python"
     }
 
     private fun configSourcePositionListener() {
         val sourcePositionListener: SourcePositionListener = SourcePositionListener(codeView)
         sourcePositionListener.setOnPositionChanged({ line, column ->
-            sourcePositionText.setText(getString(R.string.source_position, line, column))
+            sourcePositionText.text = getString(R.string.source_position, line, column)
         })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        getMenuInflater().inflate(R.menu.menu_main, menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(@NonNull item: MenuItem): Boolean {
-        val menuItemId = item.getItemId()
-        val menuGroupId = item.getGroupId()
+        val menuItemId = item.itemId
+        val menuGroupId = item.groupId
 
-        if (menuGroupId == R.id.group_languages) changeTheEditorLanguage(menuItemId)
-        else if (menuGroupId == R.id.group_themes) changeTheEditorTheme(menuItemId)
+        if (menuGroupId == R.id.group_themes) changeTheEditorTheme(menuItemId)
         else if (menuItemId == R.id.findMenu) launchEditorButtonSheet()
         else if (menuItemId == R.id.comment) commentManager.commentSelected()
         else if (menuItemId == R.id.un_comment) commentManager.unCommentSelected()
@@ -212,33 +210,23 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun changeTheEditorLanguage(languageId: Int) {
-        val oldLanguage: LanguageManager.LanguageName? = currentLanguage
-        if (languageId == R.id.language_python) currentLanguage = LanguageManager.LanguageName.PYTHON
-
-        if (currentLanguage !== oldLanguage) {
-            languageManager.applyTheme(currentLanguage, currentTheme)
-            configLanguageName()
-            configLanguageAutoComplete()
-            configLanguageAutoIndentation()
-            configCommentInfo()
-        }
-    }
-
     private fun changeTheEditorTheme(themeId: Int) {
         val oldTheme: LanguageManager.ThemeName? = currentTheme
         if (themeId == R.id.theme_monokia) currentTheme = LanguageManager.ThemeName.MONOKAI
-        else if (themeId == R.id.theme_noctics) currentTheme = LanguageManager.ThemeName.NOCTIS_WHITE
-        else if (themeId == R.id.theme_five_color) currentTheme = LanguageManager.ThemeName.FIVE_COLOR
-        else if (themeId == R.id.theme_orange_box) currentTheme = LanguageManager.ThemeName.ORANGE_BOX
+        else if (themeId == R.id.theme_noctics) currentTheme =
+            LanguageManager.ThemeName.NOCTIS_WHITE
+        else if (themeId == R.id.theme_five_color) currentTheme =
+            LanguageManager.ThemeName.FIVE_COLOR
+        else if (themeId == R.id.theme_orange_box) currentTheme =
+            LanguageManager.ThemeName.ORANGE_BOX
 
         if (currentTheme !== oldTheme) {
-            languageManager.applyTheme(currentLanguage, currentTheme)
+            languageManager.applyTheme(currentTheme)
         }
     }
 
     private fun toggleRelativeLineNumber() {
-        var isRelativeLineNumberEnabled: Boolean = codeView.isLineRelativeNumberEnabled()
+        var isRelativeLineNumberEnabled: Boolean = codeView.isLineRelativeNumberEnabled
         isRelativeLineNumberEnabled = !isRelativeLineNumberEnabled
         codeView.setEnableRelativeLineNumber(isRelativeLineNumberEnabled)
     }
@@ -246,7 +234,7 @@ class MainActivity : AppCompatActivity() {
     private fun launchEditorButtonSheet() {
         val dialog = BottomSheetDialog(this)
         dialog.setContentView(R.layout.bottom_sheet_dialog)
-        dialog.getWindow()!!.setDimAmount(0f)
+        dialog.window!!.setDimAmount(0f)
 
         val searchEdit = dialog.findViewById<EditText?>(R.id.search_edit)
         val replacementEdit = dialog.findViewById<EditText?>(R.id.replacement_edit)
@@ -269,21 +257,21 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        findPrevAction!!.setOnClickListener(View.OnClickListener { v: View? ->
+        findPrevAction!!.setOnClickListener { v: View? ->
             codeView.findPrevMatch()
-        })
+        }
 
-        findNextAction!!.setOnClickListener(View.OnClickListener { v: View? ->
+        findNextAction!!.setOnClickListener { v: View? ->
             codeView.findNextMatch()
-        })
+        }
 
-        replacementAction!!.setOnClickListener(View.OnClickListener { v: View? ->
+        replacementAction!!.setOnClickListener { v: View? ->
             val regex = searchEdit.getText().toString()
             val replacement = replacementEdit!!.getText().toString()
             codeView.replaceAllMatches(regex, replacement)
-        })
+        }
 
-        dialog.setOnDismissListener(DialogInterface.OnDismissListener { c: DialogInterface? -> codeView.clearMatches() })
+        dialog.setOnDismissListener { c: DialogInterface? -> codeView.clearMatches() }
         dialog.show()
     }
 }

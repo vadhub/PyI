@@ -35,36 +35,89 @@ public class CommentManager {
     public void commentSelected() {
         int start = textView.getSelectionStart();
         int end = textView.getSelectionEnd();
-        if (start != end) {
-            String[] lines = editable.subSequence(start, end).toString().split("\n");
-            StringBuilder builder = new StringBuilder();
-            int len = lines.length;
-            for (int i = 0; i < len ; i++) {
-                String line = lines[i];
-                if (!line.startsWith(commentStart)) builder.append(commentStart);
-                builder.append(line);
-                if (!line.endsWith(commentEnd)) builder.append(commentEnd);
-                if (i != len - 1) builder.append("\n");
+
+        if (start != end && start >= 0 && end <= editable.length()) {
+            try {
+                CharSequence selectedText = editable.subSequence(start, end);
+                String[] lines = selectedText.toString().split("\n", -1);
+
+                StringBuilder builder = new StringBuilder();
+                int len = lines.length;
+
+                for (int i = 0; i < len; i++) {
+                    String line = lines[i];
+
+                    if (!line.startsWith(commentStart)) {
+                        builder.append(commentStart);
+                    }
+
+                    builder.append(line);
+
+                    if (!commentEnd.isEmpty() && !line.endsWith(commentEnd)) {
+                        builder.append(commentEnd);
+                    }
+
+                    if (i != len - 1) {
+                        builder.append("\n");
+                    }
+                }
+
+                editable.replace(start, end, builder);
+
+                int newEnd = start + builder.length();
+                textView.setSelection(start, newEnd);
+
+            } catch (IndexOutOfBoundsException e) {
+                e.printStackTrace();
+                textView.setSelection(textView.length());
             }
-            editable.replace(start, end, builder);
         }
     }
 
     public void unCommentSelected() {
         int start = textView.getSelectionStart();
         int end = textView.getSelectionEnd();
-        if (start != end) {
-            String[] lines = editable.subSequence(start, end).toString().split("\n");
-            StringBuilder builder = new StringBuilder();
-            int len = lines.length;
-            for (int i = 0; i < len ; i++) {
-                String line = lines[i];
-                if (line.startsWith(commentStart) && line.endsWith(commentEnd))
-                    builder.append(line.substring(commentStartLength, line.length() - commendEndLength));
-                else builder.append(line);
-                if (i != len - 1) builder.append("\n");
+
+        if (start != end && start >= 0 && end <= editable.length()) {
+            try {
+                CharSequence selectedText = editable.subSequence(start, end);
+                String[] lines = selectedText.toString().split("\n", -1);
+
+                StringBuilder builder = new StringBuilder();
+                int len = lines.length;
+
+                for (int i = 0; i < len; i++) {
+                    String line = lines[i];
+
+                    if (line.startsWith(commentStart) &&
+                            (commentEnd.isEmpty() || line.endsWith(commentEnd))) {
+
+                        int startIdx = commentStartLength;
+                        int endIdx = line.length() - (commentEnd.isEmpty() ? 0 : commendEndLength);
+
+                        if (startIdx <= endIdx && endIdx <= line.length()) {
+                            builder.append(line.substring(startIdx, endIdx));
+                        } else {
+                            builder.append(line);
+                        }
+                    } else {
+                        builder.append(line);
+                    }
+
+                    if (i != len - 1) {
+                        builder.append("\n");
+                    }
+                }
+
+                editable.replace(start, end, builder);
+
+                int newEnd = start + builder.length();
+                textView.setSelection(start, newEnd);
+
+            } catch (IndexOutOfBoundsException e) {
+                e.printStackTrace();
+                textView.setSelection(textView.length());
             }
-            editable.replace(start, end, builder);
         }
     }
 

@@ -6,7 +6,6 @@ import android.content.res.Resources;
 import com.amrdeveloper.codeview.Code;
 import com.amrdeveloper.codeview.CodeView;
 import com.amrdeveloper.codeview.Keyword;
-import com.abg.pyi.R;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -38,8 +37,6 @@ public class PythonLanguage {
     public static void applyMonokaiTheme(Context context, CodeView codeView) {
         codeView.resetSyntaxPatternList();
         codeView.resetHighlighter();
-
-        Resources resources = context.getResources();
 
         //View Background
         codeView.setBackgroundColor(codeView.getResources().getColor(R.color.monokia_pro_black));

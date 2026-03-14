@@ -17,20 +17,6 @@
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/languages"
-        android:orderInCategory="3"
-        android:title="@string/languages">
-        <menu>
-            <group android:id="@+id/group_languages">
-                <item
-                    android:id="@+id/language_python"
-                    android:icon="@drawable/ic_python"
-                    android:title="@string/python" />
-            </group>
-        </menu>
-    </item>
-
-    <item
         android:id="@+id/themes"
         android:orderInCategory="4"
         android:title="@string/themes">
