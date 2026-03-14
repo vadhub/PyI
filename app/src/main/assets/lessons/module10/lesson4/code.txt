@@ -1,0 +1,8 @@
+def check_win(board, symbol):
+    """Проверяет, есть ли у symbol выигрышная линия."""
+    # Твой код
+    pass
+
+# Тест
+# board = ['X', 'X', 'X', ' ', 'O', 'O', ' ', ' ', ' ']
+# print(check_win(board, 'X'))  # Должно быть True

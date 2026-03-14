@@ -1,0 +1,26 @@
+<h2>Логические выражения</h2>
+<p>Логические выражения используются для сравнения значений. Результатом логического выражения всегда является <code>True</code> (истина) или <code>False</code> (ложь).</p>
+<br>
+<h3>Операторы сравнения</h3>
+<ul>
+  <li><code>==</code> – равно (обратите внимание: два знака равенства)</li>
+  <li><code>!=</code> – не равно</li>
+  <li><code><</code> – меньше</li>
+  <li><code>></code> – больше</li>
+  <li><code><=</code> – меньше или равно</li>
+  <li><code>>=</code> – больше или равно</li>
+</ul><br>
+<p>Примеры:</p>
+<pre><code>5 == 5   # True
+5 != 3   # True
+10 < 5   # False
+7 > 3    # True
+4 <= 4   # True
+8 >= 10  # False</code></pre>
+<br>
+<h3>Тип bool</h3>
+<p>Тип <code>bool</code> имеет всего два значения: <code>True</code> и <code>False</code>. Эти значения можно присваивать переменным и использовать в вычислениях.</p>
+<br><p>Пример:</p>
+<pre><code>is_sunny = True
+is_raining = False
+print(is_sunny)  # True</code></pre>

@@ -1,0 +1,27 @@
+# Реализуй класс BankAccount согласно описанию.
+# Проверь его работу: создай счёт, внеси деньги, сними, попробуй снять больше.
+
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        # Твой код
+        pass
+
+    def deposit(self, amount):
+        # Твой код
+        pass
+
+    def withdraw(self, amount):
+        # Твой код
+        pass
+
+    def show_balance(self):
+        # Твой код
+        pass
+
+# Тестирование
+acc = BankAccount("Иван Петров")
+acc.deposit(1000)
+acc.show_balance()
+acc.withdraw(500)
+acc.show_balance()
+acc.withdraw(600)  # должно быть ошибка

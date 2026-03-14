@@ -11,12 +11,93 @@ object DataProvider {
             createLesson(context, 1, 2, "1.2. Переменные и типы данных"),
             createLesson(context, 1, 3, "1.3. Ввод данных")
         )
+
+        val module2Lessons = listOf(
+            createLesson(context, 2, 1, "2.1. Логические выражения"),
+            createLesson(context, 2, 2, "2.2. Конструкция if-else"),
+            createLesson(context, 2, 3, "2.3. Сложные условия"),
+            createLesson(context, 2, 4, "2.4. Проект: Угадай число")
+        )
+
+        val module3Lessons = listOf(
+            createLesson(context, 3, 1, "3.1. Цикл while"),
+            createLesson(context, 3, 2, "3.2. Цикл for"),
+            createLesson(context, 3, 3, "3.3. Управление циклом"),
+            createLesson(context, 3, 4, "3.4. Проект: Угадай число (с циклом)")
+        )
+
+        val module4Lessons = listOf(
+            createLesson(context, 4, 1, "4.1. Создание списков"),
+            createLesson(context, 4, 2, "4.2. Методы списков"),
+            createLesson(context, 4, 3, "4.3. Перебор списков"),
+            createLesson(context, 4, 4, "4.4. Генераторы списков")
+        )
+
+        val module5Lessons = listOf(
+            createLesson(context, 5, 1, "5.1. Определение функции"),
+            createLesson(context, 5, 2, "5.2. Аргументы и возврат значений"),
+            createLesson(context, 5, 3, "5.3. Области видимости"),
+            createLesson(context, 5, 4, "5.4. Проект: Калькулятор")
+        )
+
+        val module6Lessons = listOf(
+            createLesson(context, 6, 1, "6.1. Методы строк"),
+            createLesson(context, 6, 2, "6.2. Форматирование строк"),
+            createLesson(context, 6, 3, "6.3. Срезы строк"),
+            createLesson(context, 6, 4, "6.4. Проект: Шифр Цезаря")
+        )
+
+        val module7Lessons = listOf(
+            createLesson(context, 7, 1, "7.1. Словари"),
+            createLesson(context, 7, 2, "7.2. Методы словарей"),
+            createLesson(context, 7, 3, "7.3. Множества"),
+            createLesson(context, 7, 4, "7.4. Проект: Телефонный справочник")
+        )
+
+        val module8Lessons = listOf(
+            createLesson(context, 8, 1, "8.1. Чтение из файла"),
+            createLesson(context, 8, 2, "8.2. Запись в файл"),
+            createLesson(context, 8, 3, "8.3. Контекстный менеджер with"),
+            createLesson(context, 8, 4, "8.4. Проект: Записная книжка")
+        )
+
+        val module9Lessons = listOf(
+            createLesson(context, 9, 1, "9.1. Классы и объекты"),
+            createLesson(context, 9, 2, "9.2. Конструктор __init__"),
+            createLesson(context, 9, 3, "9.3. Наследование"),
+            createLesson(context, 9, 4, "9.4. Проект: Банковский счёт")
+        )
+        val module10Lessons = listOf(
+            createLesson(context, 10, 1, "10.1. Проектирование игры"),
+            createLesson(context, 10, 2, "10.2. Отображение поля"),
+            createLesson(context, 10, 3, "10.3. Ход игрока"),
+            createLesson(context, 10, 4, "10.4. Проверка победы"),
+            createLesson(context, 10, 5, "10.5. Ход компьютера (случайный)"),
+            createLesson(context, 10, 6, "10.6. Игровой цикл"),
+            createLesson(context, 10, 7, "10.7. Улучшаем AI"),
+            createLesson(context, 10, 8, "10.8. Финальный билд и тестирование")
+        )
+
         return listOf(
-            Module(1, "Модуль 1. Знакомство с Python", module1Lessons)
+            Module(1, "Модуль 1. Знакомство с Python", module1Lessons),
+            Module(2, "Модуль 2. Условия и логика", module2Lessons),
+            Module(3, "Модуль 3. Циклы", module3Lessons),
+            Module(4, "Модуль 4. Списки", module4Lessons),
+            Module(5, "Модуль 5. Функции", module5Lessons),
+            Module(6, "Модуль 6. Строки и работа с текстом", module6Lessons),
+            Module(7, "Модуль 7. Словари и множества", module7Lessons),
+            Module(8, "Модуль 8. Работа с файлами", module8Lessons),
+            Module(9, "Модуль 9. Объектно-ориентированное программирование", module9Lessons),
+            Module(10, "Модуль 10. Итоговый проект: Крестики-нолики", module10Lessons)
         )
     }
 
-    private fun createLesson(context: Context, moduleId: Int, lessonId: Int, title: String): Lesson {
+    private fun createLesson(
+        context: Context,
+        moduleId: Int,
+        lessonId: Int,
+        title: String
+    ): Lesson {
         val theory = readAssetFile(context, "lessons/module$moduleId/lesson$lessonId/theory.txt")
         val code = readAssetFile(context, "lessons/module$moduleId/lesson$lessonId/code.txt")
         val task = readAssetFile(context, "lessons/module$moduleId/lesson$lessonId/task.txt")

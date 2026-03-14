@@ -1,0 +1,16 @@
+<h2>Конструктор __init__</h2>
+<p>Метод <code>__init__</code> автоматически вызывается при создании объекта. Он используется для инициализации атрибутов.</p>
+
+<h3>Синтаксис</h3>
+<pre><code>class Cat:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def meow(self):
+        print(f"Мяу! Меня зовут {self.name}")
+
+my_cat = Cat("Барсик", 3)
+my_cat.meow()</code></pre>
+
+<p>Параметр <code>self</code> ссылается на текущий объект. Через <code>self</code> мы обращаемся к атрибутам и методам внутри класса.</p>

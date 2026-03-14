@@ -1,0 +1,27 @@
+# Реализуй программу "Записная книжка" с командами add, list, delete, exit.
+# Заметки сохраняются в файл notes.txt.
+
+def add_note():
+    # Запросить текст и дописать в файл
+    pass
+
+def list_notes():
+    # Прочитать файл и вывести с номерами
+    pass
+
+def delete_note():
+    # Запросить номер и удалить соответствующую строку
+    pass
+
+while True:
+    command = input("Введите команду (add/list/delete/exit): ")
+    if command == "add":
+        add_note()
+    elif command == "list":
+        list_notes()
+    elif command == "delete":
+        delete_note()
+    elif command == "exit":
+        break
+    else:
+        print("Неизвестная команда")

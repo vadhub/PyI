@@ -1,0 +1,8 @@
+import random
+
+secret = random.randint(1, 100)
+attempts = 5
+
+print("Угадай число от 1 до 100. У тебя 5 попыток.")
+
+# Напиши код игры

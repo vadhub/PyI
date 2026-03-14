@@ -1,0 +1,55 @@
+# Оберни игровой цикл в while, который спрашивает "Хотите сыграть ещё? (да/нет)"
+# При ответе "да" начинаем новую игру.
+
+import random
+
+def display_board(board):
+    # ... как в уроке 2
+    pass
+
+def player_move(board):
+    # ... как в уроке 3
+    pass
+
+def check_win(board, symbol):
+    # ... как в уроке 4
+    pass
+
+def can_win(board, symbol):
+    # ... как в уроке 7
+    pass
+
+def computer_move(board):
+    # ... как в уроке 7 (с логикой)
+    pass
+
+while True:
+    board = [' '] * 9
+    current_player = 'X'
+    game_over = False
+
+    while not game_over:
+        display_board(board)
+
+        if current_player == 'X':
+            player_move(board)
+        else:
+            computer_move(board)
+
+        if check_win(board, current_player):
+            display_board(board)
+            if current_player == 'X':
+                print("Ты выиграл!")
+            else:
+                print("Компьютер выиграл!")
+            game_over = True
+        elif ' ' not in board:
+            display_board(board)
+            print("Ничья!")
+            game_over = True
+        else:
+            current_player = 'O' if current_player == 'X' else 'X'
+
+    again = input("Хотите сыграть ещё? (да/нет): ").lower()
+    if again != 'да':
+        break

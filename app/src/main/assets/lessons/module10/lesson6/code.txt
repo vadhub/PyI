@@ -1,0 +1,46 @@
+import random
+
+def display_board(board):
+    # Возьми код из урока 2 или напиши заново
+    pass
+
+def player_move(board):
+    # Возьми код из урока 3
+    pass
+
+def check_win(board, symbol):
+    # Возьми код из урока 4
+    pass
+
+def computer_move(board):
+    # Возьми код из урока 5
+    pass
+
+# Игровой цикл
+board = [' '] * 9
+current_player = 'X'  # X - игрок, O - компьютер
+
+while True:
+    display_board(board)
+
+    if current_player == 'X':
+        player_move(board)
+    else:
+        computer_move(board)
+
+    if check_win(board, current_player):
+        display_board(board)
+        if current_player == 'X':
+            print("Ты выиграл!")
+        else:
+            print("Компьютер выиграл!")
+        break
+
+    # Проверка на ничью
+    if ' ' not in board:
+        display_board(board)
+        print("Ничья!")
+        break
+
+    # Смена игрока
+    current_player = 'O' if current_player == 'X' else 'X'

@@ -1,0 +1,23 @@
+# Добавь функцию can_win(board, symbol), которая ищет, может ли symbol выиграть одним ходом.
+# Затем измени computer_move(board), чтобы она использовала эту логику.
+
+def can_win(board, symbol):
+    """Возвращает индекс клетки, поставив в которую symbol выигрывает, или None."""
+    # Твой код
+    pass
+
+def computer_move(board):
+    # Сначала проверяем, можем ли мы выиграть
+    win_move = can_win(board, 'O')
+    if win_move is not None:
+        board[win_move] = 'O'
+        return
+    
+    # Иначе блокируем игрока
+    block_move = can_win(board, 'X')
+    if block_move is not None:
+        board[block_move] = 'O'
+        return
+    
+    # Иначе случайный ход
+    # ... старый код случайного выбора

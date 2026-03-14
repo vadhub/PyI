@@ -1,0 +1,27 @@
+<h2>Перебор списков</h2>
+<p>Часто нужно пройтись по всем элементам списка и выполнить с ними какие-то действия.</p>
+
+<h3>Цикл for по списку</h3>
+<pre><code>fruits = ["яблоко", "банан", "апельсин"]
+for fruit in fruits:
+    print(fruit)</code></pre>
+<p>На каждой итерации переменная <code>fruit</code> принимает значение очередного элемента.</p>
+
+<h3>Функция len()</h3>
+<p><code>len()</code> возвращает длину списка (количество элементов).</p>
+<pre><code>fruits = ["яблоко", "банан", "апельсин"]
+print(len(fruits))  # 3</code></pre>
+
+<h3>Перебор по индексам</h3>
+<p>Иногда нужен не только элемент, но и его индекс. Используем <code>range(len())</code>.</p>
+<pre><code>fruits = ["яблоко", "банан", "апельсин"]
+for i in range(len(fruits)):
+    print(f"Элемент {i}: {fruits[i]}")</code></pre>
+
+<h3>Пример: среднее арифметическое</h3>
+<pre><code>numbers = [10, 20, 30, 40]
+total = 0
+for num in numbers:
+    total += num
+average = total / len(numbers)
+print(f"Сумма: {total}, Среднее: {average}")</code></pre>

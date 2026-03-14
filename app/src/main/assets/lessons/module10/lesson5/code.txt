@@ -1,0 +1,6 @@
+import random
+
+def computer_move(board):
+    """Выбирает случайную свободную клетку и ставит 'O'."""
+    # Твой код
+    pass

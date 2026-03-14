@@ -1,5 +1,6 @@
 
 import android.os.Bundle
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,13 +47,46 @@ class LessonFragment : Fragment(), ICodeEditorActions {
         val lesson = module?.lessons?.find { it.id == lessonId }
 
         if (lesson != null) {
-            binding.tvTheory.text = lesson.theory
-            binding.editTextCode.setText(lesson.initialCode)
+            val webView = binding.wvTheory
+            webView.settings.javaScriptEnabled = false
+            webView.settings.setSupportZoom(false)
+            webView.isVerticalScrollBarEnabled = false
 
+            val htmlContent = """
+        <html>
+        <head>
+            <style>
+                body { 
+                    font-family: monospace; 
+                    font-size: 16px;
+                    line-height: 1.4;
+                }
+                pre { 
+                    background-color: #f5f5f5; 
+                    padding: 8px; 
+                    border-radius: 4px;
+                    white-space: pre-wrap;
+                    word-wrap: break-word;
+                }
+                code { 
+                    font-family: monospace; 
+                }
+                h2 { font-size: 20px; font-weight: bold; margin-top: 16px; }
+                h3 { font-size: 18px; font-weight: bold; margin-top: 12px; }
+            </style>
+        </head>
+        <body>
+            ${lesson.theory}
+        </body>
+        </html>
+    """.trimIndent()
+            webView.loadDataWithBaseURL(null, htmlContent, "text/html", "UTF-8", null)
+
+            binding.editTextCode.setText(lesson.initialCode)
             if (lesson.taskDescription.isNotBlank()) {
                 binding.tvTaskTitle.visibility = View.VISIBLE
                 binding.tvTask.visibility = View.VISIBLE
-                binding.tvTask.text = lesson.taskDescription
+                binding.tvTask.text = Html.fromHtml(lesson.taskDescription, Html.FROM_HTML_MODE_COMPACT)
             } else {
                 binding.tvTaskTitle.visibility = View.GONE
                 binding.tvTask.visibility = View.GONE

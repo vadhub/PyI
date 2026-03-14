@@ -1,0 +1,13 @@
+# Создай класс Kitten, наследующий от Cat.
+# Добавь метод play(), который выводит "<имя> играет!"
+# Создай объект Kitten и вызови оба метода.
+
+class Cat:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def meow(self):
+        print(f"Мяу! Меня зовут {self.name}")
+
+# Твой код

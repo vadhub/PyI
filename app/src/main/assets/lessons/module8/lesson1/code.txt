@@ -1,0 +1,8 @@
+# Прочитай и выведи содержимое файла "sample.txt".
+# Предполагается, что файл уже существует.
+# Используй open и read, не забудь закрыть файл.
+
+file = open('sample.txt', 'r')
+content = file.read()
+file.close()
+print(content)

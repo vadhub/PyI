@@ -1,0 +1,37 @@
+<h2>Методы строк</h2>
+<p>Строки в Python имеют множество встроенных методов для обработки текста. Все методы возвращают новую строку, не изменяя исходную (строки неизменяемы).</p>
+
+<h3>Изменение регистра</h3>
+<ul>
+  <li><code>upper()</code> – переводит все символы в верхний регистр</li>
+  <li><code>lower()</code> – переводит все символы в нижний регистр</li>
+  <li><code>capitalize()</code> – переводит первый символ в верхний, остальные в нижний</li>
+</ul>
+<pre><code>text = "hello World"
+print(text.upper())       # HELLO WORLD
+print(text.lower())       # hello world
+print(text.capitalize())  # Hello world</code></pre>
+
+<h3>Удаление пробелов</h3>
+<ul>
+  <li><code>strip()</code> – удаляет пробелы в начале и конце строки</li>
+  <li><code>lstrip()</code> – только слева</li>
+  <li><code>rstrip()</code> – только справа</li>
+</ul>
+<pre><code>text = "  hello  "
+print(text.strip())  # "hello"</code></pre>
+
+<h3>Замена и разбиение</h3>
+<ul>
+  <li><code>replace(old, new)</code> – заменяет все вхождения подстроки old на new</li>
+  <li><code>split(separator)</code> – разбивает строку по разделителю и возвращает список</li>
+  <li><code>join(list)</code> – объединяет список строк в одну, вставляя между ними указанный разделитель</li>
+</ul>
+<pre><code>text = "I like Python"
+print(text.replace("like", "love"))  # I love Python
+
+words = text.split()  # по умолчанию разделитель пробел
+print(words)          # ['I', 'like', 'Python']
+
+new_text = "-".join(words)
+print(new_text)       # I-like-Python</code></pre>

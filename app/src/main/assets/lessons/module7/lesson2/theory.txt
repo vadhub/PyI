@@ -1,0 +1,25 @@
+<h2>Методы словарей</h2>
+<p>У словарей есть полезные методы для получения ключей, значений и пар.</p>
+
+<h3>Получение всех ключей, значений и пар</h3>
+<ul>
+  <li><code>keys()</code> – возвращает все ключи</li>
+  <li><code>values()</code> – возвращает все значения</li>
+  <li><code>items()</code> – возвращает пары (ключ, значение) в виде кортежей</li>
+</ul>
+<pre><code>student = {"name": "Анна", "age": 20, "city": "Москва"}
+
+print(student.keys())   # dict_keys(['name', 'age', 'city'])
+print(student.values()) # dict_values(['Анна', 20, 'Москва'])
+print(student.items())  # dict_items([('name', 'Анна'), ('age', 20), ('city', 'Москва')])</code></pre>
+
+<h3>Проверка наличия ключа (оператор in)</h3>
+<pre><code>if "name" in student:
+    print("Имя есть в словаре")</code></pre>
+
+<h3>Перебор словаря</h3>
+<pre><code>for key in student:
+    print(key, student[key])
+
+for key, value in student.items():
+    print(f"{key}: {value}")</code></pre>

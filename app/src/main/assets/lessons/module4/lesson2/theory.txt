@@ -1,0 +1,38 @@
+<h2>Методы списков</h2>
+<p>Списки имеют множество полезных методов для добавления, удаления и сортировки элементов.</p>
+
+<h3>Добавление элементов</h3>
+<ul>
+  <li><code>append(x)</code> – добавляет элемент <code>x</code> в конец списка</li>
+  <li><code>insert(i, x)</code> – вставляет элемент <code>x</code> на позицию <code>i</code></li>
+</ul>
+<pre><code>fruits = ["яблоко", "банан"]
+fruits.append("апельсин")
+print(fruits)  # ["яблоко", "банан", "апельсин"]
+
+fruits.insert(1, "киви")
+print(fruits)  # ["яблоко", "киви", "банан", "апельсин"]</code></pre>
+
+<h3>Удаление элементов</h3>
+<ul>
+  <li><code>remove(x)</code> – удаляет первый элемент со значением <code>x</code></li>
+  <li><code>pop(i)</code> – удаляет элемент на позиции <code>i</code> и возвращает его (без i удаляет последний)</li>
+</ul>
+<pre><code>fruits.remove("банан")
+print(fruits)  # ["яблоко", "киви", "апельсин"]
+
+last = fruits.pop()
+print(last)    # апельсин
+print(fruits)  # ["яблоко", "киви"]</code></pre>
+
+<h3>Сортировка и разворот</h3>
+<ul>
+  <li><code>sort()</code> – сортирует список по возрастанию</li>
+  <li><code>reverse()</code> – разворачивает список</li>
+</ul>
+<pre><code>numbers = [5, 2, 8, 1]
+numbers.sort()
+print(numbers)  # [1, 2, 5, 8]
+
+numbers.reverse()
+print(numbers)  # [8, 5, 2, 1]</code></pre>

@@ -1,0 +1,14 @@
+<h2>Контекстный менеджер with</h2>
+<p>Конструкция <code>with</code> автоматически закрывает файл после выполнения блока, даже если произошла ошибка. Это надёжнее и короче.</p>
+
+<h3>Синтаксис</h3>
+<pre><code>with open('file.txt', 'r') as file:
+    content = file.read()
+    print(content)
+# файл автоматически закрыт</code></pre>
+
+<h3>Запись с with</h3>
+<pre><code>with open('output.txt', 'w') as file:
+    file.write('Привет, мир!\n')</code></pre>
+
+<p>Всегда используйте <code>with</code> при работе с файлами.</p>

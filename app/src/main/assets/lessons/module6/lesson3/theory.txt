@@ -1,0 +1,20 @@
+<h2>Срезы строк</h2>
+<p>Срез позволяет извлечь часть строки. Синтаксис: <code>str[start:stop:step]</code>, где:</p>
+<ul>
+  <li><code>start</code> – индекс начала (включительно)</li>
+  <li><code>stop</code> – индекс конца (не включительно)</li>
+  <li><code>step</code> – шаг (по умолчанию 1)</li>
+</ul>
+<p>Индексы могут быть отрицательными (отсчёт с конца).</p>
+
+<h3>Примеры</h3>
+<pre><code>text = "Python programming"
+
+print(text[0:6])      # Python (символы с 0 по 5)
+print(text[:6])       # то же, start можно опустить
+print(text[7:])       # programming (с 7 до конца)
+print(text[-11:-1])   # programmin (отрицательные индексы)
+print(text[::2])      # Pto rgamn (каждый второй символ)
+print(text[::-1])     # переворот строки</code></pre>
+
+<p>Срезы очень полезны при работе с текстом.</p>

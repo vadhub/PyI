@@ -1,0 +1,17 @@
+<h2>Запись в файл</h2>
+<p>Для записи данных в файл используется режим <code>'w'</code> (запись) или <code>'a'</code> (добавление).</p>
+
+<h3>Запись через write()</h3>
+<pre><code>file = open('output.txt', 'w')
+file.write('Первая строка\n')
+file.write('Вторая строка\n')
+file.close()</code></pre>
+
+<p>Режим <code>'w'</code> перезаписывает файл, если он существует, или создаёт новый. Режим <code>'a'</code> добавляет данные в конец.</p>
+
+<h3>Пример со списком покупок</h3>
+<pre><code>items = ['молоко', 'хлеб', 'яйца']
+file = open('shopping.txt', 'w')
+for item in items:
+    file.write(item + '\n')
+file.close()</code></pre>
