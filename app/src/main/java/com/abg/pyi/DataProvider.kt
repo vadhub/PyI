@@ -7,9 +7,9 @@ object DataProvider {
 
     fun getModules(context: Context): List<Module> {
         val module1Lessons = listOf(
-            createLesson(context, 1, 1, "Первая программа"),
-            createLesson(context, 1, 2, "Переменные и типы данных"),
-            createLesson(context, 1, 3, "Ввод данных")
+            createLesson(context, 1, 1, "1.1. Первая программа"),
+            createLesson(context, 1, 2, "1.2. Переменные и типы данных"),
+            createLesson(context, 1, 3, "1.3. Ввод данных")
         )
         return listOf(
             Module(1, "Модуль 1. Знакомство с Python", module1Lessons)

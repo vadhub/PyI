@@ -121,11 +121,11 @@ class CodeEditorHelper(
 
     fun getCode(): String = codeView.text.toString()
 
-    fun executePythonCode(code: String): String {
+    fun executePythonCode(code: String, input: String): String {
         return try {
             val py = Python.getInstance()
             val executor = py.getModule("executor")
-            executor.callAttr("execute", code).toString()
+            executor.callAttr("execute", code, input).toString()
         } catch (e: Exception) {
             "Error: ${e.message}"
         }

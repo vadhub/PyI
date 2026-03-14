@@ -19,94 +19,112 @@
                 android:id="@+id/tv_theory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:lineSpacingExtra="4dp"/>
+                android:lineSpacingExtra="4dp"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_task_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="Задание:"
                 android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_task"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Редактор кода:"
+                android:textStyle="bold" />
+
+            <com.amrdeveloper.codeview.CodeView
+                android:id="@+id/editTextCode"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/darkGrey"
+                android:dropDownWidth="150dp"
+                android:dropDownHorizontalOffset="0dp"
+                android:dropDownSelector="@color/darkGrey"
+                android:gravity="top|start"
+                android:textDirection="firstStrong" />
+
+            <RelativeLayout
+                android:id="@+id/source_info_layout"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:background="@color/black">
+
+                <TextView
+                    android:id="@+id/language_name_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="5dp"
+                    android:gravity="center"
+                    android:text="Python"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/source_position_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center"
+                    android:text="0:0"
+                    android:textColor="@color/grey" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_run"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="Выполнить" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Ввод:"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editTextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/editbox_background"
+                android:textColor="@color/black"
+                android:padding="8dp"
+                android:typeface="monospace" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Вывод:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_output"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:textColor="@color/black"
+                android:background="@android:drawable/editbox_background"
+                android:padding="8dp"
+                android:typeface="monospace" />
 
         </LinearLayout>
+
     </ScrollView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Редактор кода:"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
-
-    <com.amrdeveloper.codeview.CodeView
-        android:id="@+id/editTextCode"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/darkGrey"
-        android:dropDownWidth="150dp"
-        android:dropDownHorizontalOffset="0dp"
-        android:dropDownSelector="@color/darkGrey"
-        android:gravity="top|start"
-        android:textDirection="firstStrong" />
-
-    <RelativeLayout
-        android:id="@+id/source_info_layout"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@color/black">
-
-        <TextView
-            android:id="@+id/language_name_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="5dp"
-            android:gravity="center"
-            android:textColor="@color/grey"
-            android:text="Python" />
-
-        <TextView
-            android:id="@+id/source_position_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="5dp"
-            android:gravity="center"
-            android:textColor="@color/grey"
-            android:text="0:0" />
-    </RelativeLayout>
-
-    <Button
-        android:id="@+id/btn_run"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Выполнить"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Вывод:"
-        android:textStyle="bold"
-        android:layout_marginTop="16dp"/>
-
-    <TextView
-        android:id="@+id/tv_output"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@android:drawable/editbox_background"
-        android:padding="8dp"
-        android:typeface="monospace"/>
 
 </LinearLayout>

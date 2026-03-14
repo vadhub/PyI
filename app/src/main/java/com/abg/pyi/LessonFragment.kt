@@ -61,7 +61,8 @@ class LessonFragment : Fragment(), ICodeEditorActions {
 
         binding.btnRun.setOnClickListener {
             val code = binding.editTextCode.text.toString()
-            val output = codeEditorHelper.executePythonCode(code)
+            val input = binding.editTextInput.text.toString()
+            val output = codeEditorHelper.executePythonCode(code, input)
             binding.tvOutput.text = output
         }
     }
