@@ -58,7 +58,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun navigateToModules() {
-        supportFragmentManager.popBackStack()
+    fun navigateToModule(moduleId: Int) {
+        supportFragmentManager.commit {
+            replace(R.id.fragment_container, LessonsPagerFragment.newInstance(moduleId))
+            addToBackStack(null)
+        }
     }
+
 }

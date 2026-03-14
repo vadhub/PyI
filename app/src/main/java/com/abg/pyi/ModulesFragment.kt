@@ -27,7 +27,7 @@ class ModulesFragment : Fragment() {
 
         val modules = DataProvider.getModules(requireContext())
         val adapter = ModulesAdapter(modules) { module ->
-            (activity as? MainActivity)?.navigateToLesson(module.id, module.lessons.first().id)
+            (activity as? MainActivity)?.navigateToModule(module.id)
         }
 
         binding.recyclerModules.layoutManager = LinearLayoutManager(requireContext())
