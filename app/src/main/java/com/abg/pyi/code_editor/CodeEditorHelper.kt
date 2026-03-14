@@ -43,7 +43,7 @@ class CodeEditorHelper(
         // Line numbers
         codeView.setEnableLineNumber(true)
         codeView.setLineNumberTextColor(Color.GRAY)
-        codeView.setLineNumberTextSize(25f)
+        codeView.setLineNumberTextSize(18f)
 
         // Highlight current line
         codeView.setEnableHighlightCurrentLine(true)
