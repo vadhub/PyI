@@ -3,10 +3,10 @@ package com.abg.pyi.code_editor
 interface ICodeEditorActions {
     fun undo()
     fun redo()
-    fun toggleComment()
-    fun uncomment()
-    fun clearText()
+    fun commentSelected()
+    fun unCommentSelected()
     fun findAndReplace()
-    fun changeTheme(themeId: Int)
+    fun clearText()
     fun toggleRelativeLineNumber()
+    fun changeTheme(themeId: Int)
 }

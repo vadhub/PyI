@@ -32,8 +32,8 @@ class MainActivity : AppCompatActivity() {
         if (currentFragment is ICodeEditorActions) {
             when (item.itemId) {
                 R.id.findMenu -> currentFragment.findAndReplace()
-                R.id.comment -> currentFragment.toggleComment()
-                R.id.un_comment -> currentFragment.uncomment()
+                R.id.comment -> currentFragment.commentSelected()
+                R.id.un_comment -> currentFragment.unCommentSelected()
                 R.id.clearText -> currentFragment.clearText()
                 R.id.toggle_relative_line_number -> currentFragment.toggleRelativeLineNumber()
                 R.id.undo -> currentFragment.undo()

@@ -1,31 +1,33 @@
 package com.abg.pyi
 
+import android.content.Context
+import java.io.BufferedReader
+
 object DataProvider {
-    fun getModules(): List<Module> {
-        val lessonsModule1 = listOf(
-            Lesson(
-                id = 1,
-                title = "Первая программа",
-                theory = """
-                    Python — это популярный язык программирования.
-                    Он используется для веб-разработки, анализа данных, искусственного интеллекта и многого другого.
-                    
-                    Первая программа на Python:
-                    ```python
-                    print("Привет, мир!")
-Функция print() выводит текст на экран.
-""".trimIndent(),
-                initialCode = "print(\"Привет, мир!\")",
-                taskDescription = "Напиши программу, которая выводит «Привет, мир!»."
-            ),
-        )
 
-        val module1 = Module(
-            id = 1,
-            title = "Модуль 1. Знакомство с Python",
-            lessons = lessonsModule1
+    fun getModules(context: Context): List<Module> {
+        val module1Lessons = listOf(
+            createLesson(context, 1, 1, "Первая программа"),
+            createLesson(context, 1, 2, "Переменные и типы данных"),
+            createLesson(context, 1, 3, "Ввод данных")
         )
+        return listOf(
+            Module(1, "Модуль 1. Знакомство с Python", module1Lessons)
+        )
+    }
 
-        return listOf(module1)
+    private fun createLesson(context: Context, moduleId: Int, lessonId: Int, title: String): Lesson {
+        val theory = readAssetFile(context, "lessons/module$moduleId/lesson$lessonId/theory.txt")
+        val code = readAssetFile(context, "lessons/module$moduleId/lesson$lessonId/code.txt")
+        val task = readAssetFile(context, "lessons/module$moduleId/lesson$lessonId/task.txt")
+        return Lesson(lessonId, title, theory, code, task)
+    }
+
+    private fun readAssetFile(context: Context, fileName: String): String {
+        return try {
+            context.assets.open(fileName).bufferedReader().use(BufferedReader::readText)
+        } catch (e: Exception) {
+            "Не удалось загрузить содержимое файла $fileName"
+        }
     }
 }

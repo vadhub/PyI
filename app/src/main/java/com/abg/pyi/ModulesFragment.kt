@@ -25,7 +25,7 @@ class ModulesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val modules = DataProvider.getModules()
+        val modules = DataProvider.getModules(requireContext())
         val adapter = ModulesAdapter(modules) { module ->
             (activity as? MainActivity)?.navigateToLesson(module.id, module.lessons.first().id)
         }
