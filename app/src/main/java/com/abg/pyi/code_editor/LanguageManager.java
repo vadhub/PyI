@@ -1,14 +1,11 @@
-package com.abg.pyi;
+package com.abg.pyi.code_editor;
 
 import android.content.Context;
 
 import com.amrdeveloper.codeview.Code;
 import com.amrdeveloper.codeview.CodeView;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 public class LanguageManager {

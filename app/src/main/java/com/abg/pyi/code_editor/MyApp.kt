@@ -1,4 +1,4 @@
-package com.abg.pyi
+package com.abg.pyi.code_editor
 
 import android.app.Application
 import com.chaquo.python.Python

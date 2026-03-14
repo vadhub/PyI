@@ -1,4 +1,4 @@
-package com.abg.pyi;
+package com.abg.pyi.code_editor;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.abg.pyi.R;
 import com.amrdeveloper.codeview.Code;
 import com.amrdeveloper.codeview.CodeViewAdapter;
 import com.amrdeveloper.codeview.Snippet;

@@ -1,4 +1,4 @@
-package com.abg.pyi;
+package com.abg.pyi.code_editor;
 
 import android.text.Editable;
 import android.widget.EditText;

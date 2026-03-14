@@ -1,8 +1,9 @@
-package com.abg.pyi;
+package com.abg.pyi.code_editor;
 
 import android.content.Context;
 import android.content.res.Resources;
 
+import com.abg.pyi.R;
 import com.amrdeveloper.codeview.Code;
 import com.amrdeveloper.codeview.CodeView;
 import com.amrdeveloper.codeview.Keyword;

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_theory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp"/>
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Код:"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/et_code"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="top"
+        android:typeface="monospace"
+        android:background="@android:drawable/editbox_background"
+        android:padding="8dp"/>
+
+    <Button
+        android:id="@+id/btn_run"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Запустить"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Вывод:"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/tv_output"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@android:drawable/editbox_background"
+        android:padding="8dp"
+        android:typeface="monospace"/>
+
+</LinearLayout>

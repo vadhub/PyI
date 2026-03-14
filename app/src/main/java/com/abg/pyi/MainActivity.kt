@@ -16,6 +16,12 @@ import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.commit
+import com.abg.pyi.code_editor.CommentManager
+import com.abg.pyi.code_editor.CustomCodeViewAdapter
+import com.abg.pyi.code_editor.LanguageManager
+import com.abg.pyi.code_editor.SourcePositionListener
+import com.abg.pyi.code_editor.UndoRedoManager
 import com.amrdeveloper.codeview.Code
 import com.amrdeveloper.codeview.CodeView
 import com.chaquo.python.Python
@@ -273,5 +279,17 @@ class MainActivity : AppCompatActivity() {
 
         dialog.setOnDismissListener { c: DialogInterface? -> codeView.clearMatches() }
         dialog.show()
+    }
+
+    fun navigateToLesson(moduleId: Int, lessonId: Int) {
+        supportFragmentManager.commit {
+            replace(R.id.fragment_container, LessonFragment.newInstance(moduleId, lessonId))
+            addToBackStack(null)
+        }
+    }
+
+    // Метод для возврата к списку модулей (опционально)
+    fun navigateToModules() {
+        supportFragmentManager.popBackStack()
     }
 }

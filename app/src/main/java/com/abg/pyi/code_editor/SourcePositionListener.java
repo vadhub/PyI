@@ -1,4 +1,4 @@
-package com.abg.pyi;
+package com.abg.pyi.code_editor;
 
 import android.text.Layout;
 import android.view.View;
