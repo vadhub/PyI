@@ -2,6 +2,7 @@ package com.abg.pyi
 
 import android.content.SharedPreferences
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.abg.pyi.databinding.ItemModuleBinding
@@ -24,14 +25,20 @@ class ModulesAdapter(
         val module = modules[position]
         holder.binding.tvModuleTitle.text = module.title
 
-        val lessons = module.lessons
-        var passedCount = 0
-        for (lesson in lessons) {
-            if (sharedPref.getBoolean("test_passed_${module.id}_${lesson.id}", false)) {
-                passedCount++
+        if (module.id == 0 || module.id == 10) {
+            holder.binding.tvProgress.visibility = View.GONE
+        } else {
+            holder.binding.tvProgress.visibility = View.VISIBLE
+            val lessons = module.lessons
+            var passedCount = 0
+            for (lesson in lessons) {
+                if (sharedPref.getBoolean("test_passed_${module.id}_${lesson.id}", false)) {
+                    passedCount++
+                }
             }
+            holder.binding.tvProgress.text = "$passedCount/${lessons.size} тестов пройдено"
         }
-        holder.binding.tvProgress.text = "$passedCount/${lessons.size} тестов пройдено"
+
         holder.binding.root.setOnClickListener { onItemClick(module) }
     }
 

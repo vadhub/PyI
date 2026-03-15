@@ -1,0 +1,37 @@
+{
+  "questions": [
+    {
+      "question": "Как правильно перебрать все элементы списка numbers?",
+      "options": [
+        "for i in numbers:",
+        "for i in range(numbers):",
+        "for each numbers:",
+        "while numbers:"
+      ],
+      "correct": 0,
+      "explanation": "Цикл for item in list: последовательно перебирает элементы списка."
+    },
+    {
+      "question": "Функция len() для списка возвращает...",
+      "options": [
+        "количество элементов",
+        "индекс последнего элемента",
+        "длину строки",
+        "сумму элементов"
+      ],
+      "correct": 0,
+      "explanation": "len() возвращает длину (количество элементов) списка."
+    },
+    {
+      "question": "Что выведет код?\nnumbers = [1, 2, 3]\ntotal = 0\nfor num in numbers:\n    total += num\nprint(total)",
+      "options": [
+        "0",
+        "1",
+        "3",
+        "6"
+      ],
+      "correct": 3,
+      "explanation": "Сумма элементов 1+2+3 = 6."
+    }
+  ]
+}

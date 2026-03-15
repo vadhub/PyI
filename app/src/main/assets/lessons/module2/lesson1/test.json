@@ -1,0 +1,28 @@
+{
+  "questions": [
+    {
+      "question": "Какое значение получится в результате выражения 5 > 3?",
+      "options": ["True", "False", "5", "Ошибка"],
+      "correct": 0,
+      "explanation": "5 > 3 — истина, поэтому результат True."
+    },
+    {
+      "question": "Что означает оператор '!=' в Python?",
+      "options": ["Равно", "Не равно", "Меньше или равно", "Присваивание"],
+      "correct": 1,
+      "explanation": "'!=' — оператор 'не равно'."
+    },
+    {
+      "question": "Какое значение имеет выражение 10 <= 10?",
+      "options": ["True", "False", "10", "None"],
+      "correct": 0,
+      "explanation": "10 <= 10 — истина, так как 10 меньше или равно 10."
+    },
+    {
+      "question": "Какой тип данных имеют значения True и False?",
+      "options": ["int", "str", "bool", "float"],
+      "correct": 2,
+      "explanation": "True и False принадлежат типу bool."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "questions": [
+    {
+      "question": "Какой метод переводит все символы строки в нижний регистр?",
+      "options": [
+        "upper()",
+        "lower()",
+        "capitalize()",
+        "casefold()"
+      ],
+      "correct": 1,
+      "explanation": "Метод lower() возвращает строку, где все буквы строчные."
+    },
+    {
+      "question": "Что выведет код?\ntext = '  hello  '\nprint(text.strip())",
+      "options": [
+        "'  hello  '",
+        "'hello'",
+        "'  hello'",
+        "'hello  '"
+      ],
+      "correct": 1,
+      "explanation": "strip() удаляет пробелы в начале и конце строки."
+    },
+    {
+      "question": "Какой метод разделяет строку на список подстрок по разделителю?",
+      "options": [
+        "split()",
+        "join()",
+        "divide()",
+        "separate()"
+      ],
+      "correct": 0,
+      "explanation": "split() разбивает строку и возвращает список."
+    }
+  ]
+}
