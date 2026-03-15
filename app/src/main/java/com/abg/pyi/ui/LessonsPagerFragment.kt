@@ -1,4 +1,4 @@
-package com.abg.pyi
+package com.abg.pyi.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.abg.pyi.data.DataProvider
+import com.abg.pyi.models.Module
 import com.google.android.material.tabs.TabLayoutMediator
 import com.abg.pyi.databinding.FragmentLessonsPagerBinding
 

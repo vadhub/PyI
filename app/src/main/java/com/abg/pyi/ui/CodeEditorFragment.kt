@@ -1,4 +1,4 @@
-package com.abg.pyi
+package com.abg.pyi.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater

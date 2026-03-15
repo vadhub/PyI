@@ -1,4 +1,4 @@
-package com.abg.pyi
+package com.abg.pyi.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.abg.pyi.data.DataProvider
+import com.abg.pyi.MyApp
+import com.abg.pyi.models.TestQuestion
 import com.abg.pyi.databinding.FragmentTestBinding
+import kotlinx.coroutines.launch
 
 class TestFragment : Fragment() {
 
@@ -113,6 +118,10 @@ class TestFragment : Fragment() {
             append("Результат: $correctCount/$total\n")
             if (passed) {
                 append("Тест пройден!")
+                val repository = (requireActivity().application as MyApp).repository
+                lifecycleScope.launch {
+                    repository.recordAction("test")
+                }
             } else {
                 append("Тест не пройден. Попробуйте ещё раз.")
             }

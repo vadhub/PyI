@@ -1,10 +1,11 @@
+package com.abg.pyi.ui
+
 import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
 import android.text.Html
-import android.util.Log
 import android.view.GestureDetector
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -15,13 +16,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.viewpager2.widget.ViewPager2
-import com.abg.pyi.DataProvider
-import com.abg.pyi.LessonsPagerFragment
+import com.abg.pyi.data.DataProvider
+import com.abg.pyi.MyApp
 import com.abg.pyi.R
-import com.abg.pyi.TestFragment
+import com.abg.pyi.editor.CodeEditorHelper
+import com.abg.pyi.editor.ICodeEditorActions
 import com.abg.pyi.databinding.FragmentLessonBinding
-import com.abg.pyi.code_editor.CodeEditorHelper
-import com.abg.pyi.code_editor.ICodeEditorActions
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class LessonFragment : Fragment(), ICodeEditorActions {
 
@@ -147,11 +150,15 @@ class LessonFragment : Fragment(), ICodeEditorActions {
             val input = binding.editTextInput.text.toString()
             val output = codeEditorHelper.executePythonCode(code, input)
             binding.tvOutput.text = output
+            val repository = (context?.applicationContext as MyApp).repository
+            CoroutineScope(Dispatchers.IO).launch {
+                repository.recordAction("run_code")
+            }
         }
 
         binding.btnTest.setOnClickListener {
             requireActivity().supportFragmentManager.commit {
-                replace(R.id.fragment_container, TestFragment.newInstance(moduleId, lessonId))
+                replace(R.id.fragment_container, TestFragment.Companion.newInstance(moduleId, lessonId))
                 addToBackStack(null)
             }
         }

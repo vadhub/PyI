@@ -1,12 +1,12 @@
-package com.abg.pyi
+package com.abg.pyi.adapters
 
 import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.abg.pyi.models.Module
 import com.abg.pyi.databinding.ItemModuleBinding
-
 
 class ModulesAdapter(
     private val modules: List<Module>,

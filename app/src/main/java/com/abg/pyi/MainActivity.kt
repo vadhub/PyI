@@ -6,7 +6,10 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
-import com.abg.pyi.code_editor.ICodeEditorActions
+import com.abg.pyi.editor.ICodeEditorActions
+import com.abg.pyi.ui.LessonFragment
+import com.abg.pyi.ui.LessonsPagerFragment
+import com.abg.pyi.ui.ModulesFragment
 
 class MainActivity : AppCompatActivity() {
 

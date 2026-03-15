@@ -1,4 +1,4 @@
-package com.abg.pyi
+package com.abg.pyi.models
 
 data class Module(
     val id: Int,

@@ -1,4 +1,4 @@
-package com.abg.pyi
+package com.abg.pyi.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -7,8 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.abg.pyi.ui.ActivityGraphFragment
+import com.abg.pyi.data.DataProvider
+import com.abg.pyi.MainActivity
+import com.abg.pyi.adapters.ModulesAdapter
+import com.abg.pyi.R
 import com.abg.pyi.databinding.FragmentModulesBinding
-
 
 class ModulesFragment : Fragment() {
 
@@ -26,8 +30,13 @@ class ModulesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val modules = DataProvider.getModules(requireContext())
+        if (savedInstanceState == null) {
+            childFragmentManager.beginTransaction()
+                .replace(R.id.calendar_container, ActivityGraphFragment())
+                .commit()
+        }
 
+        val modules = DataProvider.getModules(requireContext())
         val sharedPref = requireContext().getSharedPreferences("test_results", Context.MODE_PRIVATE)
         val adapter = ModulesAdapter(modules, sharedPref) { module ->
             (activity as? MainActivity)?.navigateToModule(module.id)

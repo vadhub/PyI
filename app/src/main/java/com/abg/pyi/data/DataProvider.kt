@@ -1,6 +1,9 @@
-package com.abg.pyi
+package com.abg.pyi.data
 
 import android.content.Context
+import com.abg.pyi.models.Lesson
+import com.abg.pyi.models.Module
+import com.abg.pyi.models.TestQuestion
 import org.json.JSONObject
 import java.io.BufferedReader
 

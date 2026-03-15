@@ -1,4 +1,4 @@
-package com.abg.pyi.code_editor
+package com.abg.pyi.editor
 
 interface ICodeEditorActions {
     fun undo()
