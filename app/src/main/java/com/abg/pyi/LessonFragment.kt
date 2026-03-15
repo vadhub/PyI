@@ -13,10 +13,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.viewpager2.widget.ViewPager2
 import com.abg.pyi.DataProvider
 import com.abg.pyi.LessonsPagerFragment
 import com.abg.pyi.R
+import com.abg.pyi.TestFragment
 import com.abg.pyi.databinding.FragmentLessonBinding
 import com.abg.pyi.code_editor.CodeEditorHelper
 import com.abg.pyi.code_editor.ICodeEditorActions
@@ -145,6 +147,13 @@ class LessonFragment : Fragment(), ICodeEditorActions {
             val input = binding.editTextInput.text.toString()
             val output = codeEditorHelper.executePythonCode(code, input)
             binding.tvOutput.text = output
+        }
+
+        binding.btnTest.setOnClickListener {
+            requireActivity().supportFragmentManager.commit {
+                replace(R.id.fragment_container, TestFragment.newInstance(moduleId, lessonId))
+                addToBackStack(null)
+            }
         }
 
         val parentFragment = requireParentFragment()

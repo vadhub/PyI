@@ -1,6 +1,7 @@
 package com.abg.pyi
 
 import android.content.Context
+import org.json.JSONObject
 import java.io.BufferedReader
 
 object DataProvider {
@@ -119,6 +120,31 @@ object DataProvider {
             context.assets.open(fileName).bufferedReader().use(BufferedReader::readText)
         } catch (e: Exception) {
             "Не удалось загрузить содержимое файла $fileName"
+        }
+    }
+
+    fun getTestQuestions(context: Context, moduleId: Int, lessonId: Int): List<TestQuestion> {
+        val fileName = "lessons/module$moduleId/lesson$lessonId/test.json"
+        return try {
+            val jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
+            val json = JSONObject(jsonString)
+            val questionsArray = json.getJSONArray("questions")
+            val questions = mutableListOf<TestQuestion>()
+            for (i in 0 until questionsArray.length()) {
+                val qObj = questionsArray.getJSONObject(i)
+                val question = qObj.getString("question")
+                val optionsArray = qObj.getJSONArray("options")
+                val options = mutableListOf<String>()
+                for (j in 0 until optionsArray.length()) {
+                    options.add(optionsArray.getString(j))
+                }
+                val correct = qObj.getInt("correct")
+                val explanation = qObj.optString("explanation", "")
+                questions.add(TestQuestion(question, options, correct, explanation))
+            }
+            questions
+        } catch (e: Exception) {
+            emptyList()
         }
     }
 }

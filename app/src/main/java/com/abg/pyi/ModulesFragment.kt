@@ -1,5 +1,6 @@
 package com.abg.pyi
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +27,9 @@ class ModulesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val modules = DataProvider.getModules(requireContext())
-        val adapter = ModulesAdapter(modules) { module ->
+
+        val sharedPref = requireContext().getSharedPreferences("test_results", Context.MODE_PRIVATE)
+        val adapter = ModulesAdapter(modules, sharedPref) { module ->
             (activity as? MainActivity)?.navigateToModule(module.id)
         }
 
