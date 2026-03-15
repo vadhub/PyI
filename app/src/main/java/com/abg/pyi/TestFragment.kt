@@ -68,11 +68,13 @@ class TestFragment : Fragment() {
             binding.radio2,
             binding.radio3
         )
+
+        binding.radioGroup.clearCheck()
         for (i in radioButtons.indices) {
             if (i < q.options.size) {
                 radioButtons[i].text = q.options[i]
                 radioButtons[i].visibility = View.VISIBLE
-                radioButtons[i].isChecked = (answers[index] == i)
+                radioButtons[i].isChecked = false
             } else {
                 radioButtons[i].visibility = View.GONE
             }

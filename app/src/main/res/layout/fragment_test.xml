@@ -37,25 +37,25 @@
 
         <RadioButton
             android:id="@+id/radio_0"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Вариант 1" />
 
         <RadioButton
             android:id="@+id/radio_1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Вариант 2" />
 
         <RadioButton
             android:id="@+id/radio_2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Вариант 3" />
 
         <RadioButton
             android:id="@+id/radio_3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Вариант 4" />
     </RadioGroup>
