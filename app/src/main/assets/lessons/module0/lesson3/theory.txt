@@ -1,0 +1,29 @@
+<h2>Основы работы в терминале</h2>
+<p>Терминал (командная строка) — мощный инструмент для управления компьютером. Мы будем использовать его для запуска Python-скриптов.</p>
+
+<h3>Навигация</h3>
+<ul>
+    <li><code>pwd</code> (Mac/Linux) или <code>cd</code> без параметров (Windows) — показать текущую папку.</li>
+    <li><code>ls</code> (Mac/Linux) или <code>dir</code> (Windows) — список файлов в папке.</li>
+    <li><code>cd папка</code> — перейти в папку.</li>
+    <li><code>cd ..</code> — вернуться на уровень выше.</li>
+</ul>
+
+<h3>Запуск Python в интерактивном режиме</h3>
+<p>Введите <code>python</code> (или <code>python3</code>) и нажмите Enter. Вы увидите приглашение <code>>>></code>. Теперь можно писать код прямо в терминале:</p>
+<pre><code>>>> print("Hello from terminal!")
+Hello from terminal!
+>>> exit()</code></pre>
+
+<h3>Создание и запуск скрипта</h3>
+<ol>
+    <li>Создайте папку для проектов, например <code>python_projects</code>.</li>
+    <li>В этой папке создайте файл <code>hello.py</code> с содержимым:
+        <pre><code>name = input("Как тебя зовут? ")
+print(f"Привет, {name}!")</code></pre>
+    </li>
+    <li>В терминале перейдите в эту папку и выполните:
+        <pre><code>python hello.py</code></pre>
+    </li>
+</ol>
+<p>Вы увидите приглашение ввести имя — программа работает!</p>

@@ -1,0 +1,31 @@
+<h2>Установка Python</h2>
+<p>Перейдите на официальный сайт <a href="https://www.python.org/downloads/">python.org/downloads</a> и скачайте последнюю версию для вашей операционной системы.</p>
+
+<h3>Windows</h3>
+<ol>
+    <li>Запустите скачанный установщик.</li>
+    <li><strong>Важно!</strong> Внизу первого окна отметьте галочку <code>Add Python to PATH</code>.</li>
+    <li>Нажмите <code>Install Now</code>.</li>
+    <li>После завершения закройте установщик.</li>
+</ol>
+
+<h3>macOS</h3>
+<ol>
+    <li>Откройте скачанный <code>.pkg</code> файл.</li>
+    <li>Следуйте инструкциям установщика.</li>
+    <li>После установки откройте Терминал (через Spotlight) и введите <code>python3 --version</code> для проверки.</li>
+</ol>
+
+<h3>Linux (Ubuntu/Debian)</h3>
+<p>В большинстве дистрибутивов Python уже установлен. Проверьте версию:</p>
+<pre><code>python3 --version</code></pre>
+<p>Если нет, установите через пакетный менеджер:</p>
+<pre><code>sudo apt update
+sudo apt install python3 python3-pip</code></pre>
+
+<h3>Проверка установки</h3>
+<p>Откройте терминал (командную строку) и введите:</p>
+<pre><code>python --version</code></pre>
+<p>Или для macOS/Linux:</p>
+<pre><code>python3 --version</code></pre>
+<p>Вы должны увидеть что-то вроде <code>Python 3.12.2</code>.</p>

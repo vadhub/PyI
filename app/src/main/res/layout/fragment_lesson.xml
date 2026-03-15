@@ -39,6 +39,7 @@
                 android:visibility="gone" />
 
             <TextView
+                android:id="@+id/tv_code_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -93,7 +94,17 @@
                 android:layout_marginTop="8dp"
                 android:text="Выполнить" />
 
+            <Button
+                android:id="@+id/btn_copy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Копировать код"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"/>
+
             <TextView
+                android:id="@+id/tv_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -110,6 +121,7 @@
                 android:typeface="monospace" />
 
             <TextView
+                android:id="@+id/tv_out"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"

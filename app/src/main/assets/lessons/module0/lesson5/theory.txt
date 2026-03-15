@@ -1,0 +1,28 @@
+<h2>Виртуальные окружения</h2>
+<p>Виртуальное окружение изолирует зависимости конкретного проекта, чтобы не было конфликтов версий библиотек.</p>
+
+<h3>Создание окружения</h3>
+<p>Откройте терминал в папке проекта и выполните:</p>
+<pre><code>python -m venv venv</code></pre>
+<p>Будет создана папка <code>venv</code>.</p>
+
+<h3>Активация</h3>
+<ul>
+    <li><strong>Windows:</strong> <code>venv\Scripts\activate</code></li>
+    <li><strong>Mac/Linux:</strong> <code>source venv/bin/activate</code></li>
+</ul>
+<p>После активации в начале строки терминала появится <code>(venv)</code>.</p>
+
+<h3>Установка пакетов с pip</h3>
+<p>Pip — менеджер пакетов Python. Пример установки библиотеки <code>requests</code>:</p>
+<pre><code>pip install requests</code></pre>
+<p>Теперь её можно использовать в коде:</p>
+<pre><code>import requests
+response = requests.get('https://api.github.com')
+print(response.status_code)</code></pre>
+
+<h3>Сохранение зависимостей</h3>
+<p>Чтобы поделиться проектом, нужно зафиксировать все установленные пакеты:</p>
+<pre><code>pip freeze > requirements.txt</code></pre>
+<p>Другой разработчик сможет установить их командой:</p>
+<pre><code>pip install -r requirements.txt</code></pre>

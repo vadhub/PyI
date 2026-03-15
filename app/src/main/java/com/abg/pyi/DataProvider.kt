@@ -6,6 +6,15 @@ import java.io.BufferedReader
 object DataProvider {
 
     fun getModules(context: Context): List<Module> {
+
+        val module0Lessons = listOf(
+            createLesson(context, 0, 1, "0.1. Зачем нужна локальная среда?"),
+            createLesson(context, 0, 2, "0.2. Установка Python"),
+            createLesson(context, 0, 3, "0.3. Знакомство с терминалом"),
+            createLesson(context, 0, 4, "0.4. Редактор кода (VS Code)"),
+            createLesson(context, 0, 5, "0.5. Виртуальные окружения и pip"),
+        )
+
         val module1Lessons = listOf(
             createLesson(context, 1, 1, "1.1. Первая программа"),
             createLesson(context, 1, 2, "1.2. Переменные и типы данных"),
@@ -79,6 +88,7 @@ object DataProvider {
         )
 
         return listOf(
+            Module(0, "Модуль 0. Настройка среды разработки", module0Lessons),
             Module(1, "Модуль 1. Знакомство с Python", module1Lessons),
             Module(2, "Модуль 2. Условия и логика", module2Lessons),
             Module(3, "Модуль 3. Циклы", module3Lessons),
