@@ -10,6 +10,10 @@ import com.abg.pyi.editor.ICodeEditorActions
 import com.abg.pyi.ui.LessonFragment
 import com.abg.pyi.ui.LessonsPagerFragment
 import com.abg.pyi.ui.ModulesFragment
+import com.yandex.mobile.ads.banner.BannerAdSize
+import com.yandex.mobile.ads.banner.BannerAdView
+import com.yandex.mobile.ads.common.AdRequest
+import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +26,13 @@ class MainActivity : AppCompatActivity() {
                 replace(R.id.fragment_container, ModulesFragment.newInstance())
             }
         }
+
+        //demo-banner-yandex
+        val mBanner = findViewById<BannerAdView>(R.id.adView)
+        mBanner.setAdUnitId("demo-banner-yandex")
+        mBanner.setAdSize(getAdSize(mBanner))
+        val adRequest: AdRequest = AdRequest.Builder().build()
+        mBanner.loadAd(adRequest)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -66,6 +77,17 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.fragment_container, LessonsPagerFragment.newInstance(moduleId))
             addToBackStack(null)
         }
+    }
+
+    private fun getAdSize(mBanner: BannerAdView): BannerAdSize {
+        val displayMetrics = resources.displayMetrics
+        var adWidthPixels = mBanner.width
+        if (adWidthPixels == 0) {
+            // If the ad hasn't been laid out, default to the full screen width
+            adWidthPixels = displayMetrics.widthPixels
+        }
+        val adWidth = (adWidthPixels / displayMetrics.density).roundToInt()
+        return BannerAdSize.stickySize(this, adWidth)
     }
 
 }
