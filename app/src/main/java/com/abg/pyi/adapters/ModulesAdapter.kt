@@ -27,16 +27,18 @@ class ModulesAdapter(
 
         if (module.id == 0 || module.id == 10) {
             holder.binding.tvProgress.visibility = View.GONE
+            holder.binding.progressModule.visibility = View.GONE
         } else {
+            holder.binding.progressModule.visibility = View.VISIBLE
             holder.binding.tvProgress.visibility = View.VISIBLE
             val lessons = module.lessons
             var passedCount = 0
             for (lesson in lessons) {
-                if (sharedPref.getBoolean("test_passed_${module.id}_${lesson.id}", false)) {
-                    passedCount++
-                }
+                if (sharedPref.getBoolean("test_passed_${module.id}_${lesson.id}", false)) passedCount++
             }
-            holder.binding.tvProgress.text = "$passedCount/${lessons.size} тестов пройдено"
+            val progress = if (lessons.isNotEmpty()) (passedCount * 100 / lessons.size) else 0
+            holder.binding.progressModule.progress = progress
+            holder.binding.tvProgress.text = "$passedCount/${lessons.size}тестов пройдено"
         }
 
         holder.binding.root.setOnClickListener { onItemClick(module) }

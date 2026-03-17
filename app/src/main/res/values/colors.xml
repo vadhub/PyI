@@ -48,8 +48,5 @@
     <color name="orange_box_dark_grey">#414d63</color>
     <color name="orange_box_white">#ffffff</color>
 
-    <color name="activity_low">#9be9a8</color>
-    <color name="activity_medium">#40c463</color>
-    <color name="activity_high">#30a14e</color>
-    <color name="activity_very_high">#216e39</color>
+    <color name="colorPrimary">#497AFF</color>
 </resources>

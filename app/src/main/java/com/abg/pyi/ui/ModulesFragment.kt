@@ -7,11 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.abg.pyi.ui.ActivityGraphFragment
-import com.abg.pyi.data.DataProvider
 import com.abg.pyi.MainActivity
 import com.abg.pyi.adapters.ModulesAdapter
-import com.abg.pyi.R
+import com.abg.pyi.data.DataProvider
 import com.abg.pyi.databinding.FragmentModulesBinding
 
 class ModulesFragment : Fragment() {
@@ -30,12 +28,6 @@ class ModulesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (savedInstanceState == null) {
-            childFragmentManager.beginTransaction()
-                .replace(R.id.calendar_container, ActivityGraphFragment())
-                .commit()
-        }
-
         val modules = DataProvider.getModules(requireContext())
         val sharedPref = requireContext().getSharedPreferences("test_results", Context.MODE_PRIVATE)
         val adapter = ModulesAdapter(modules, sharedPref) { module ->
@@ -44,6 +36,35 @@ class ModulesFragment : Fragment() {
 
         binding.recyclerModules.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerModules.adapter = adapter
+    }
+
+    private fun updateOverallProgress() {
+        val sharedPref = requireContext().getSharedPreferences("test_results", Context.MODE_PRIVATE)
+        val modules = DataProvider.getModules(requireContext())
+        var totalLessons = 0
+        var passedTests = 0
+
+        for (module in modules) {
+            // Пропускаем модуль 0 и 10, если они существуют (по желанию)
+            if (module.id == 0 || module.id == 10) continue
+
+            val lessons = module.lessons
+            totalLessons += lessons.size
+            for (lesson in lessons) {
+                if (sharedPref.getBoolean("test_passed_${module.id}_${lesson.id}", false)) {
+                    passedTests++
+                }
+            }
+        }
+
+        val percent = if (totalLessons > 0) (passedTests * 100 / totalLessons) else 0
+        binding.circularProgress.progress = percent
+        binding.tvProgressPercent.text = "$percent%"
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateOverallProgress()
     }
 
     override fun onDestroyView() {

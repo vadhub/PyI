@@ -150,10 +150,6 @@ class LessonFragment : Fragment(), ICodeEditorActions {
             val input = binding.editTextInput.text.toString()
             val output = codeEditorHelper.executePythonCode(code, input)
             binding.tvOutput.text = output
-            val repository = (context?.applicationContext as MyApp).repository
-            CoroutineScope(Dispatchers.IO).launch {
-                repository.recordAction("run_code")
-            }
         }
 
         binding.btnTest.setOnClickListener {

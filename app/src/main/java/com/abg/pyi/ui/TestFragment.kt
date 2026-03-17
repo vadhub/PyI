@@ -118,10 +118,6 @@ class TestFragment : Fragment() {
             append("Результат: $correctCount/$total\n")
             if (passed) {
                 append("Тест пройден!")
-                val repository = (requireActivity().application as MyApp).repository
-                lifecycleScope.launch {
-                    repository.recordAction("test")
-                }
             } else {
                 append("Тест не пройден. Попробуйте ещё раз.")
             }
