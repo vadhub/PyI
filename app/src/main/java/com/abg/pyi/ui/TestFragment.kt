@@ -7,12 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.abg.pyi.data.DataProvider
-import com.abg.pyi.MyApp
-import com.abg.pyi.models.TestQuestion
 import com.abg.pyi.databinding.FragmentTestBinding
-import kotlinx.coroutines.launch
+import com.abg.pyi.models.TestQuestion
+import androidx.core.content.edit
 
 class TestFragment : Fragment() {
 
@@ -24,7 +22,10 @@ class TestFragment : Fragment() {
     private var questions: List<TestQuestion> = emptyList()
     private var currentIndex = 0
     private val answers = mutableListOf<Int>()
+
     private lateinit var interstitialManager: InterstitialManager
+
+    private val INTERVAL_MILLIS = 3 * 60 * 1000L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,7 +116,7 @@ class TestFragment : Fragment() {
         val passed = correctCount > total / 2
 
         val prefs = requireContext().getSharedPreferences("test_results", Context.MODE_PRIVATE)
-        prefs.edit().putBoolean("test_passed_${moduleId}_${lessonId}", passed).apply()
+        prefs.edit { putBoolean("test_passed_${moduleId}_${lessonId}", passed) }
 
         val message = buildString {
             append("Результат: $correctCount/$total\n")
@@ -140,8 +141,18 @@ class TestFragment : Fragment() {
         binding.tvQuestion.text = message
         binding.radioGroup.visibility = View.GONE
         binding.btnNext.text = "Закрыть"
+
         binding.btnNext.setOnClickListener {
-            interstitialManager.showAd {
+            val adPrefs = requireContext().getSharedPreferences("ad_timer", Context.MODE_PRIVATE)
+            val lastShown = adPrefs.getLong("last_interstitial", 0L)
+            val now = System.currentTimeMillis()
+
+            if (now - lastShown >= INTERVAL_MILLIS) {
+                adPrefs.edit { putLong("last_interstitial", now) }
+                interstitialManager.showAd {
+                    requireActivity().supportFragmentManager.popBackStack()
+                }
+            } else {
                 requireActivity().supportFragmentManager.popBackStack()
             }
         }
