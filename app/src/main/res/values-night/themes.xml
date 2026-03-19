@@ -3,6 +3,21 @@
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/button_primary_text</item>
+
+        <!-- Accent color -->
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Surface colors -->
+        <item name="android:colorBackground">@color/colorSurface</item>
+        <item name="colorOnBackground">@color/colorOnSurface</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
     </style>
 
     <style name="Widget.App.Button.Primary" parent="Widget.MaterialComponents.Button">

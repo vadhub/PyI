@@ -48,8 +48,6 @@
     <color name="orange_box_dark_grey">#414d63</color>
     <color name="orange_box_white">#ffffff</color>
 
-    <color name="colorPrimary">#497AFF</color>
-
     <color name="primary">#2196F3</color>
     <color name="primary_dark">#1976D2</color>
     <color name="accent">#FF4081</color>
@@ -60,4 +58,14 @@
     <color name="button_outlined_text">@color/primary</color>
     <color name="button_text_text">@color/primary</color>
     <color name="ripple">#40FFFFFF</color>
+
+    <!-- Основные цвета приложения -->
+    <color name="colorPrimary">#2196F3</color>        <!-- Синий -->
+    <color name="colorPrimaryDark">#1976D2</color>    <!-- Тёмно-синий -->
+    <color name="colorAccent">#FF9800</color>         <!-- Оранжевый акцент -->
+
+    <!-- Дополнительные цвета -->
+    <color name="colorSurface">#FFFFFF</color>        <!-- Поверхности (светлая тема) -->
+    <color name="colorOnSurface">#212121</color>      <!-- Текст на поверхности -->
+
 </resources>
