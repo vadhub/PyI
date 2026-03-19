@@ -1,4 +1,4 @@
-<div style="background-color: #fff3cd; border: 1px solid #ffeeba; padding: 10px; border-radius: 5px;">
+<div style="background-color: #fff3cd; border: 1px solid #ffeeba; padding: 10px; border-radius: 5px; color: #000000;">
     <strong>Важно!</strong> Работа с файлами и бесконечные циклы не поддерживаются в мобильном интерпретаторе.
     Для выполнения практических заданий этого модуля используйте компьютер с установленным Python.
     Скопируйте код из редактора и запустите его в своей среде.
