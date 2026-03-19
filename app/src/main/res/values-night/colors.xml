@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#90CAF9</color>
+    <color name="primary_dark">#42A5F5</color>
+    <color name="accent">#FF80AB</color>
+
+    <color name="button_primary_bg">@color/primary</color>
+    <color name="button_primary_text">@color/black</color>
+    <color name="button_outlined_stroke">@color/primary</color>
+    <color name="button_outlined_text">@color/primary</color>
+    <color name="button_text_text">@color/primary</color>
+    <color name="ripple">#40FFFFFF</color>
+</resources>

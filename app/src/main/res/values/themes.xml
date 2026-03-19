@@ -1,6 +1,48 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/black</item>
+    </style>
+
+    <style name="Widget.App.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/button_primary_text</item>
+        <item name="backgroundTint">@color/button_primary_bg</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="android:paddingHorizontal">24dp</item>
+        <item name="rippleColor">@color/ripple</item>
+    </style>
+
+    <style name="Widget.App.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/button_outlined_text</item>
+        <item name="strokeColor">@color/button_outlined_stroke</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="android:paddingHorizontal">24dp</item>
+        <item name="rippleColor">@color/ripple</item>
+    </style>
+
+    <style name="Widget.App.Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/button_text_text</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="android:paddingHorizontal">24dp</item>
+        <item name="rippleColor">@color/ripple</item>
+    </style>
+
+    <style name="Widget.App.Button.Primary.Small" parent="Widget.App.Button.Primary">
+        <item name="android:paddingVertical">8dp</item>
+        <item name="android:paddingHorizontal">16dp</item>
+        <item name="android:textSize">14sp</item>
     </style>
 </resources>

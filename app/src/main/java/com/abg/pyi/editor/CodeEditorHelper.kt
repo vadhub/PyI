@@ -66,7 +66,6 @@ class CodeEditorHelper(
         pairCompleteMap['{'] = '}'
         pairCompleteMap['['] = ']'
         pairCompleteMap['('] = ')'
-        pairCompleteMap['<'] = '>'
         pairCompleteMap['"'] = '"'
         pairCompleteMap['\''] = '\''
         codeView.setPairCompleteMap(pairCompleteMap)

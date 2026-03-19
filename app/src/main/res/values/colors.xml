@@ -49,4 +49,15 @@
     <color name="orange_box_white">#ffffff</color>
 
     <color name="colorPrimary">#497AFF</color>
+
+    <color name="primary">#2196F3</color>
+    <color name="primary_dark">#1976D2</color>
+    <color name="accent">#FF4081</color>
+
+    <color name="button_primary_bg">@color/primary</color>
+    <color name="button_primary_text">@color/white</color>
+    <color name="button_outlined_stroke">@color/primary</color>
+    <color name="button_outlined_text">@color/primary</color>
+    <color name="button_text_text">@color/primary</color>
+    <color name="ripple">#40FFFFFF</color>
 </resources>

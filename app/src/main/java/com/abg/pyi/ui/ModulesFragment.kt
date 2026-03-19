@@ -60,6 +60,7 @@ class ModulesFragment : Fragment() {
         val percent = if (totalLessons > 0) (passedTests * 100 / totalLessons) else 0
         binding.circularProgress.progress = percent
         binding.tvProgressPercent.text = "$percent%"
+        binding.tvProgressDetail.text = "$passedTests/$totalLessons тестов"
     }
 
     override fun onResume() {

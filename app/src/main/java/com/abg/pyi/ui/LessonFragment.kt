@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.Html
 import android.view.GestureDetector
@@ -59,6 +60,9 @@ class LessonFragment : Fragment(), ICodeEditorActions {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val isDarkTheme =
+            (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
+
         codeEditorHelper = CodeEditorHelper(binding.editTextCode, requireContext())
         codeEditorHelper.setup()
 
@@ -103,37 +107,69 @@ class LessonFragment : Fragment(), ICodeEditorActions {
             webView.settings.setSupportZoom(false)
             webView.isVerticalScrollBarEnabled = false
 
-            val htmlContent = """
-        <html>
-        <head>
-            <style>
-                body { 
-                    font-family: monospace; 
-                    font-size: 16px;
-                    line-height: 1.4;
-                }
-                pre { 
-                    background-color: #f5f5f5; 
-                    padding: 8px; 
-                    border-radius: 4px;
-                    white-space: pre-wrap;
-                    word-wrap: break-word;
-                }
-                code { 
-                    font-family: monospace; 
-                }
-                h2 { font-size: 20px; font-weight: bold; margin-top: 16px; }
-                h3 { font-size: 18px; font-weight: bold; margin-top: 12px; }
-            </style>
-        </head>
-        <body>
-            ${lesson.theory}
-        </body>
-        </html>
-    """.trimIndent()
-            webView.loadDataWithBaseURL(null, htmlContent, "text/html", "UTF-8", null)
+            val style = if (isDarkTheme) {
+                """
+    body { 
+        background-color: #121212; 
+        color: #e0e0e0; 
+        font-family: monospace; 
+        font-size: 16px;
+        line-height: 1.4;
+        margin: 8px;
+    }
+    pre { 
+        background-color: #1e1e1e; 
+        color: #e0e0e0;
+        padding: 8px; 
+        border-radius: 4px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+    code { 
+        font-family: monospace; 
+    }
+    h2, h3 { color: #ffffff; }
+    """
+            } else {
+                """
+    body { 
+        background-color: #ffffff; 
+        color: #000000; 
+        font-family: monospace; 
+        font-size: 16px;
+        line-height: 1.4;
+        margin: 8px;
+    }
+    pre { 
+        background-color: #f5f5f5; 
+        padding: 8px; 
+        border-radius: 4px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+    code { 
+        font-family: monospace; 
+    }
+    h2, h3 { color: #000000; }
+    """
+            }
 
-            binding.editTextCode.setText(lesson.initialCode)
+            val htmlContent = """
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            $style
+        </style>
+    </head>
+    <body>
+        ${lesson.theory}
+    </body>
+    </html>
+""".trimIndent()
+            binding.wvTheory.loadDataWithBaseURL(null, htmlContent, "text/html", "UTF-8", null)
+
+            binding.editTextCode.setText("\n"+lesson.initialCode+"\n")
             if (lesson.taskDescription.isNotBlank()) {
                 binding.tvTaskTitle.visibility = View.VISIBLE
                 binding.tvTask.visibility = View.VISIBLE
@@ -154,7 +190,10 @@ class LessonFragment : Fragment(), ICodeEditorActions {
 
         binding.btnTest.setOnClickListener {
             requireActivity().supportFragmentManager.commit {
-                replace(R.id.fragment_container, TestFragment.Companion.newInstance(moduleId, lessonId))
+                replace(
+                    R.id.fragment_container,
+                    TestFragment.Companion.newInstance(moduleId, lessonId)
+                )
                 addToBackStack(null)
             }
         }
