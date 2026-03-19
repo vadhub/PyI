@@ -24,6 +24,7 @@ class TestFragment : Fragment() {
     private var questions: List<TestQuestion> = emptyList()
     private var currentIndex = 0
     private val answers = mutableListOf<Int>()
+    private lateinit var interstitialManager: InterstitialManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +44,8 @@ class TestFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        interstitialManager = InterstitialManager(requireActivity())
+        interstitialManager.loadAd()
 
         questions = DataProvider.getTestQuestions(requireContext(), moduleId, lessonId)
         if (questions.isEmpty()) {
@@ -138,7 +141,9 @@ class TestFragment : Fragment() {
         binding.radioGroup.visibility = View.GONE
         binding.btnNext.text = "Закрыть"
         binding.btnNext.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
+            interstitialManager.showAd {
+                requireActivity().supportFragmentManager.popBackStack()
+            }
         }
     }
 

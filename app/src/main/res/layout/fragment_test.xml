@@ -20,50 +20,58 @@
         android:fillViewport="true"
         android:scrollbars="vertical">
 
-        <TextView
-            android:id="@+id/tv_question"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Текст вопроса"
-            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="Текст вопроса"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp">
+
+                <RadioButton
+                    android:id="@+id/radio_0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Вариант 1" />
+
+                <RadioButton
+                    android:id="@+id/radio_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Вариант 2" />
+
+                <RadioButton
+                    android:id="@+id/radio_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Вариант 3" />
+
+                <RadioButton
+                    android:id="@+id/radio_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Вариант 4" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Далее" />
+
+        </LinearLayout>
+
     </ScrollView>
-
-    <RadioGroup
-        android:id="@+id/radio_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp">
-
-        <RadioButton
-            android:id="@+id/radio_0"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Вариант 1" />
-
-        <RadioButton
-            android:id="@+id/radio_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Вариант 2" />
-
-        <RadioButton
-            android:id="@+id/radio_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Вариант 3" />
-
-        <RadioButton
-            android:id="@+id/radio_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Вариант 4" />
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/btn_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Далее" />
 </LinearLayout>
