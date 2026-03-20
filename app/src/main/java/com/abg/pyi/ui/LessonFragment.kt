@@ -77,6 +77,7 @@ class LessonFragment : Fragment(), ICodeEditorActions {
             binding.editTextCode.visibility = View.GONE
             binding.sourceInfoLayout.visibility = View.GONE
             binding.tvCodeLabel.visibility = View.GONE
+            binding.btnTest.visibility = View.GONE
             if (moduleId != 0) {
                 binding.tvCodeLabel.visibility = View.VISIBLE
                 binding.sourceInfoLayout.visibility = View.VISIBLE
