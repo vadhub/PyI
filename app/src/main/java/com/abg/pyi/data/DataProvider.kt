@@ -101,7 +101,7 @@ object DataProvider {
             Module(6, "Модуль 6. Строки и работа с текстом", module6Lessons),
             Module(7, "Модуль 7. Словари и множества", module7Lessons),
             Module(8, "Модуль 8. Работа с файлами", module8Lessons),
-            Module(9, "Модуль 9. Объектно-ориентированное программирование", module9Lessons),
+            Module(9, "Модуль 9. ООП", module9Lessons),
             Module(10, "Модуль 10. Итоговый проект: Крестики-нолики", module10Lessons)
         )
     }

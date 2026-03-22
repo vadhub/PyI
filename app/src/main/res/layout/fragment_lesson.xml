@@ -27,9 +27,9 @@
                 style="@style/Widget.App.Button.Outlined"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Пройти тест"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="8dp"
+                android:text="Пройти тест" />
 
             <TextView
                 android:id="@+id/tv_task_title"
@@ -55,18 +55,23 @@
                 android:text="Редактор кода:"
                 android:textStyle="bold" />
 
-            <com.amrdeveloper.codeview.CodeView
-                android:id="@+id/editTextCode"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/darkGrey"
-                android:dropDownWidth="150dp"
-                android:scrollbars="horizontal|vertical"
-                android:overScrollMode="always"
-                android:dropDownHorizontalOffset="0dp"
-                android:dropDownSelector="@color/darkGrey"
-                android:gravity="top|start"
-                android:textDirection="firstStrong" />
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal">
+
+                <com.amrdeveloper.codeview.CodeView
+                    android:id="@+id/editTextCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@color/darkGrey"
+                    android:gravity="top|start"
+                    android:overScrollMode="always"
+                    android:scrollbars="none"
+                    android:textDirection="firstStrong"
+                    tools:ignore="WebViewLayout" />
+
+            </HorizontalScrollView>
 
             <RelativeLayout
                 android:id="@+id/source_info_layout"
@@ -108,10 +113,10 @@
                 android:id="@+id/btn_copy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Копировать код"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
-                android:visibility="gone"/>
+                android:text="Копировать код"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_input"
@@ -126,8 +131,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:drawable/editbox_background"
-                android:textColor="@color/black"
                 android:padding="8dp"
+                android:textColor="@color/black"
                 android:typeface="monospace" />
 
             <TextView
@@ -142,9 +147,9 @@
                 android:id="@+id/tv_output"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:textColor="@color/black"
                 android:background="@android:drawable/editbox_background"
                 android:padding="8dp"
+                android:textColor="@color/black"
                 android:typeface="monospace" />
 
         </LinearLayout>
